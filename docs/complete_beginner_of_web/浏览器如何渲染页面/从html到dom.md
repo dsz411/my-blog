@@ -14,7 +14,7 @@ sidebar_position: 2
 
 这个把字节数据解码成字符数据的过程称之为“字节流解码”
 
-![2](	https://development-guides-1258936571.cos.ap-chengdu.myqcloud.com/web/guides/completebeginners/2.png)
+![2](	../img/2.png)
 
 我们通过浏览器调试工具查看网络请求时，也是经过了上述操作过程，才能直观地看到字符串
 
@@ -113,7 +113,7 @@ DocumentType           HTMLHtmlElement
                                           TextNode
 ```
 
-![3](	https://development-guides-1258936571.cos.ap-chengdu.myqcloud.com/web/guides/completebeginners/3.png)
+![3](	../img/3.png)
 
 ### 补充：从CSS到CSSOM
 
@@ -135,6 +135,6 @@ img { float: left }
 
 对于上面的代码，会解析生成类似下面结构的 DOM 树：
 
-![4](	https://development-guides-1258936571.cos.ap-chengdu.myqcloud.com/web/guides/completebeginners/4.png)
+![4](	../img/4.png)
 
 需要注意的是，上图中的 CSSOM 树并不完整，完整的 CSSOM 树还应当包括浏览器提供的默认样式（也称为“User Agent 样式”）

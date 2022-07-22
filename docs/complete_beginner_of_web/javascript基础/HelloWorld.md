@@ -33,7 +33,7 @@ sidebar_position: 3
 
    可以看到如下内容：
 
-   ![51](	https://development-guides-1258936571.cos.ap-chengdu.myqcloud.com/web/guides/completebeginners/51.png)
+   ![51](	../img/51.png)
 
 > 我们将 `<script>` 放在HTML文件的底部附近的原因是浏览器会按照代码在文件中的顺序加载 HTML
 >

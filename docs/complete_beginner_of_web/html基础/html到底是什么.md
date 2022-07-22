@@ -26,7 +26,7 @@ HTML 由一系列的元素（[elements](https://developer.mozilla.org/zh-CN/docs
 
 让我们进一步探讨我们的段落元素：
 
-![01](	https://development-guides-1258936571.cos.ap-chengdu.myqcloud.com/web/guides/completebeginners/01.png)
+![01](../img/01.png)
 
 这个元素的主要部分有：
 
@@ -52,7 +52,7 @@ HTML 由一系列的元素（[elements](https://developer.mozilla.org/zh-CN/docs
 
 元素也可以拥有属性，如下：
 
-![05](	https://development-guides-1258936571.cos.ap-chengdu.myqcloud.com/web/guides/completebeginners/05.png)
+![05](	../img/05.png)
 
 属性包含了关于元素的一些额外信息，这些信息本身不应显现在内容中
 

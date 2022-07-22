@@ -30,7 +30,7 @@ p {
 
    应该看到以下页面：
 
-![45](	https://development-guides-1258936571.cos.ap-chengdu.myqcloud.com/web/guides/completebeginners/45.png)
+![45](	../img/45.png)
 
 如果段落文字变红，那么祝贺你，你已经成功地迈出了 CSS 学习的第一步
 
@@ -38,7 +38,7 @@ p {
 
 让我们来仔细看一看上述CSS：
 
-![46](	https://development-guides-1258936571.cos.ap-chengdu.myqcloud.com/web/guides/completebeginners/46.png)
+![46](	../img/46.png)
 
 整个结构称为 规则集（通常简称“规则”），各部分释义如下：
 
