@@ -1,5 +1,5 @@
 ---
-sidebar_posiiton: 1
+sidebar_position: 1
 ---
 
 # 获取 Git 仓库

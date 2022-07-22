@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Git
+# Git 概览
 
 > https://git-scm.com/book/zh/v2
 
