@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "My Site",
   tagline: "Dinosaurs are cool",
-  url: "https://your-docusaurus-test-site.com",
+  url: "http://my-blog-woad-mu.vercel.app/",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -45,7 +45,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/dsz411/my-blog/tree/main/",
 
-          blogSidebarCount: 'ALL',
+          blogSidebarCount: "ALL",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -64,12 +64,12 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
-          // {
-          //   type: 'doc',
-          //   docId: 'intro',
-          //   position: 'left',
-          //   label: 'Tutorial',
-          // },
+          {
+            type: 'doc',
+            docId: 'react/ajax_and_apis',
+            position: 'left',
+            label: 'Tutorial',
+          },
           { to: "/blog/vs-code-shortcuts", label: "Blog", position: "left" },
           {
             href: "https://github.com/dsz411/my-blog",
@@ -84,6 +84,10 @@ const config = {
           {
             title: "Docs",
             items: [
+              {
+                label: "Docs",
+                to: "/docs/react/ajax_and_apis",
+              },
               {
                 label: "Blog",
                 to: "/blog/vs-code-shortcuts",
