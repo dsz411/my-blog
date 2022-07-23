@@ -4,9 +4,7 @@ sidebar_position: 1
 
 # Git 概览
 
-> https://git-scm.com/book/zh/v2
-
-安装 git: [https://git-scm.com/book/zh/v2/起步-安装-Git](https://git-scm.com/book/zh/v2/起步-安装-Git)
+安装 git: [Git - Installing Git (git-scm.com)](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 ## 初次运行 Git 前的配置
 
