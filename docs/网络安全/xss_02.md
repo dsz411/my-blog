@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# XSS：漏洞的检测与防御
+# XSS: 漏洞的检测与防御
 
 目前 Flash 已经被各大浏览器禁用，Adobe 官方也不再更新 Flash 相关产品。 HTML5 技术已经基本替换掉 Flash，因此不再介绍 Flash 相关的漏洞。
 
