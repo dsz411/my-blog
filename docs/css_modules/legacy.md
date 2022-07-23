@@ -4,7 +4,9 @@ sidebar_position: 7
 
 # CSS Modules 结合历史遗留项目实践
 
-好的技术方案除了功能强大炫酷，还要能做到现有项目能平滑迁移。CSS Modules 在这一点上表现的非常灵活
+好的技术方案除了功能强大炫酷，还要能做到现有项目能平滑迁移
+
+CSS Modules 在这一点上表现的非常灵活
 
 ## 外部如何覆盖局部样式
 
@@ -79,4 +81,6 @@ src
     └── Component.scss
 ```
 
-这样所有全局的样式都放到 `src/styles/app.scss` 中引入就可以了。其它所有目录包括 `src/views` 中的样式都是局部的
+这样所有全局的样式都放到 `src/styles/app.scss` 中引入就可以了
+
+其它所有目录包括 `src/views` 中的样式都是局部的

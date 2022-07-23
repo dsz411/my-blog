@@ -32,6 +32,8 @@ export default class Dialog extends React.Component {
 }
 ```
 
-注意，一般把组件最外层节点对应的 class 名称为 `root`。这里使用了 [classnames](https://www.npmjs.com/package/classnames) 库来操作 class 名
+注意，一般把组件最外层节点对应的 class 名称为 `root`
+
+这里使用了 [classnames](https://www.npmjs.com/package/classnames) 库来操作 class 名
 
 如果你不想频繁的输入 `styles.**`，可以试一下 [react-css-modules](https://github.com/gajus/react-css-modules)，它通过高阶函数的形式来避免重复输入 `styles.**`

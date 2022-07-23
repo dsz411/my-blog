@@ -12,4 +12,4 @@ sidebar_position: 1
 
 更新 ng: `npm uninstall -g @angular/cli; npm install -g @angular/cli`
 
-你还会在本文档的其它地方看到许多其它的 ng 命令, 例如 `ng add` 等
+你还会在其它地方看到许多其它的 ng 命令, 例如 `ng add` 等
