@@ -439,4 +439,3 @@ Beef credentials: beef:aaGivbkemeYNtCYRFrlyQN75lcmMYMm5
 BeEF 上面的利用功能实在是太多了, 可以把每个功能都试用一下, 相信试用完之后会对 XSS 的危害和利用手法有新的认识
 
 
-

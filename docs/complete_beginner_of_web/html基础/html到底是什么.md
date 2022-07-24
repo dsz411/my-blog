@@ -6,9 +6,9 @@ sidebar_position: 2
 
 HTML 不是一门编程语言，而是一种用于定义内容结构的标记语言
 
-HTML 由一系列的元素（[elements](https://developer.mozilla.org/zh-CN/docs/Glossary/Element)）组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作
+HTML 由一系列的元素组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作
 
-一对标签（ [tags](https://developer.mozilla.org/zh-CN/docs/Glossary/Tag)）可以为一段文字或者一张图片添加超链接，将文字设置为斜体，改变字号，等等
+一对标签可以为一段文字或者一张图片添加超链接，将文字设置为斜体，改变字号，等等
 
 例如，键入下面一行内容：
 
