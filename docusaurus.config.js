@@ -66,7 +66,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'react/ajax_and_apis',
+            docId: 'http/http概述',
             position: 'left',
             label: 'Tutorial',
           },
@@ -86,7 +86,7 @@ const config = {
             items: [
               {
                 label: "Docs",
-                to: "/docs/react/ajax_and_apis",
+                to: "/docs/http/http概述",
               },
               {
                 label: "Blog",
