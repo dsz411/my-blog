@@ -49,7 +49,7 @@ y1 = np.sin(x1)
 plt.plot(x1, y1)
 ```
 
-![25](C:/codings/my-blog/docs/machinelearning/img/25.jpg)
+![25](../img/25.jpg)
 
 > sin 曲线的图形
 
@@ -69,7 +69,7 @@ ax.legend(handles, labels)
 plt.show()
 ```
 
-![26](C:/codings/my-blog/docs/machinelearning/img/26.jpg)
+![26](../img/26.jpg)
 
 > 先创建对象再输出图形
 
@@ -114,7 +114,7 @@ y2 = x2 * np.random.rand(100)
 
   `x2` 和 `y2` 的散点图如图所示
 
-  ![27](C:/codings/my-blog/docs/machinelearning/img/27.jpg)
+  ![27](../img/27.jpg)
 
   > 散点图
 
@@ -126,7 +126,7 @@ y2 = x2 * np.random.rand(100)
 
   设 `y2` 的直方图的 `bin` 为 5，输出的图形如图所示
 
-  ![28](C:/codings/my-blog/docs/machinelearning/img/28.jpg)
+  ![28](../img/28.jpg)
 
   > 直方图
 
@@ -138,7 +138,7 @@ y2 = x2 * np.random.rand(100)
 
   输出的柱状图如图所示
 
-  ![29](C:/codings/my-blog/docs/machinelearning/img/29.jpg)
+  ![29](../img/29.jpg)
 
   > 柱状图
 
@@ -150,7 +150,7 @@ y2 = x2 * np.random.rand(100)
 
   `x2` 和 `y2` 的折线图如图所示
 
-  ![30](C:/codings/my-blog/docs/machinelearning/img/30.jpg)
+  ![30](../img/30.jpg)
 
   > 折线图
 
@@ -164,7 +164,7 @@ y2 = x2 * np.random.rand(100)
 
   箱形图是查看数据分布的优秀的可视化方法
 
-  ![31](C:/codings/my-blog/docs/machinelearning/img/31.jpg)
+  ![31](../img/31.jpg)
 
   > 箱形图
 
@@ -192,7 +192,7 @@ y3 = data.data[:, [9]]
 plt.scatter(x3, y3)
 ```
 
-![32](C:/codings/my-blog/docs/machinelearning/img/32.jpg)
+![32](../img/32.jpg)
 
 > 红酒数据集的散点图
 
@@ -202,7 +202,7 @@ plt.scatter(x3, y3)
 plt.hist(y3, bins=5)
 ```
 
-![33](C:/codings/my-blog/docs/machinelearning/img/33.jpg)
+![33](../img/33.jpg)
 
 > $$y3$$ 的直方图
 
