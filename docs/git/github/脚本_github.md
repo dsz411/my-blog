@@ -182,3 +182,147 @@ hs_err_pid*
 }
 ```
 
+## 在一个问题上评论
+
+然而，如果想要在网站上进行一个操作，如在 Issue 或 Pull Request 上评论，或者想要查看私有内容或与其交互，你需要授权
+
+这里提供了几种授权方式
+
+你可以使用仅需用户名与密码的基本授权，但是通常更好的主意是使用一个个人访问令牌
+
+可以从设置页的 “Applications” 标签生成访问令牌
+
+![87](../img/87.png)
+
+它会询问这个令牌的作用域与一个描述
+
+确保使用一个好的描述信息，这样当脚本或应用不再使用时你会很放心地移除
+
+GitHub 只会显示令牌一次，所以记得一定要拷贝它
+
+现在可以在脚本中使用它代替使用用户名写密码来授权
+
+这很漂亮，因为可以限制想要做的范围并且令牌是可废除的
+
+这也会有一个提高频率上限的附加优点
+
+如果没有授权的话，你会被限制在一小时最多发起 60 次请求
+
+如果授权则可以一小时最多发起 5000 次请求
+
+所以让我们利用它来对我们的其中一个问题进行评论
+
+想要对一个特定问题 Issue #6 留下一条评论
+
+必须使用刚刚生成的令牌作为 Authorization 头信息，发送一个到 `repos/<user>/<repo>/issues/<num>/comments` 的 HTTP POST 请求
+
+```shell
+$ curl -H "Content-Type: application/json" \
+       -H "Authorization: token TOKEN" \
+       --data '{"body":"A new comment, :+1:"}' \
+       https://api.github.com/repos/schacon/blink/issues/6/comments
+{
+  "id": 58322100,
+  "html_url": "https://github.com/schacon/blink/issues/6#issuecomment-58322100",
+  ...
+  "user": {
+    "login": "tonychacon",
+    "id": 7874698,
+    "avatar_url": "https://avatars.githubusercontent.com/u/7874698?v=2",
+    "type": "User",
+  },
+  "created_at": "2014-10-08T07:48:19Z",
+  "updated_at": "2014-10-08T07:48:19Z",
+  "body": "A new comment, :+1:"
+}
+```
+
+现在如果进入到那个问题，可以看到我们刚刚发布的评论，像 [从 GitHub API 发布的一条评论](https://git-scm.com/book/zh/v2/ch00/_api_comment) 一样
+
+![88](../img/88.png)
+
+可以使用 API 去做任何可以在网站上做的事情 — 创建与设置里程碑、指派人员到 Issues 与 Pull Requests，创建与修改标签、访问提交数据、创建新的提交与分支、打开关闭或合并 Pull Requests、创建与编辑团队、在 Pull Request 中评论某行代码、搜索网站等等
+
+## 修改 Pull Request 的状态
+
+我们要看最后一个例子在使用拉取请求时非常有用
+
+每一个提交可以有一个或多个与它关联的状态，有 API 来添加与查询状态
+
+大多数持续集成与测试服务通过测试推送的代码后使用这个 API 来回应，然后报告提交是否通过了全部测试
+
+你也可以使用该接口来检查提交信息是否经过合适的格式化、提交者是否遵循了所有你的贡献准则、提交是否经过有效的签名 — 种种这类事情
+
+假设在仓库中设置了一个 web 钩子访问一个用来检查提交信息中的 `Signed-off-by` 字符串的小的 web 服务
+
+```
+require 'httparty'
+require 'sinatra'
+require 'json'
+
+post '/payload' do
+  push = JSON.parse(request.body.read) # parse the JSON
+  repo_name = push['repository']['full_name']
+
+  # look through each commit message
+  push["commits"].each do |commit|
+
+    # look for a Signed-off-by string
+    if /Signed-off-by/.match commit['message']
+      state = 'success'
+      description = 'Successfully signed off!'
+    else
+      state = 'failure'
+      description = 'No signoff found.'
+    end
+
+    # post status to GitHub
+    sha = commit["id"]
+    status_url = "https://api.github.com/repos/#{repo_name}/statuses/#{sha}"
+
+    status = {
+      "state"       => state,
+      "description" => description,
+      "target_url"  => "http://example.com/how-to-signoff",
+      "context"     => "validate/signoff"
+    }
+    HTTParty.post(status_url,
+      :body => status.to_json,
+      :headers => {
+        'Content-Type'  => 'application/json',
+        'User-Agent'    => 'tonychacon/signoff',
+        'Authorization' => "token #{ENV['TOKEN']}" }
+    )
+  end
+end
+```
+
+希望这相当容易做
+
+在这个 web 钩子处理器中我们浏览刚刚推送上来的每一个提交，在提交信息中查找字符串 *Signed-off-by* 并且最终使用 HTTP 向 `/repos/<user>/<repo>/statuses/<commit_sha>` API 接口发送一个带有状态的 POST 请求
+
+在本例中可以发送一个状态（*success*, *failure*, *error*）、一个发生了什么的描述信息、 一个用户可以了解更多信息的目标 URL 与一个 “context” 以防一个单独的提交有多个状态
+
+例如，一个测试服务可以提供一个状态与一个类似这样的验证服务也可能提供一个状态 — “context” 字段是用来区别它们的
+
+如果某人在 GitHub 中打开了一个新的拉取请求并且这个钩子已经设置，会看到类似 [通过 API 的提交状态](https://git-scm.com/book/zh/v2/ch00/_commit_status) 的信息
+
+![89](../img/89.png)
+
+现在可以看到一个小的绿色对勾标记在提交信息中有 “Signed-off-by” 的提交旁边，红色的对勾标记在作者忘记签名的提交旁边
+
+也可以看到 Pull Request 显示在那个分支上的最后提交的状态，如果失败的话会警告你
+
+如果对测试结果使用这个 API 那么就不会不小心合并某些未通过测试的最新提交
+
+## Octokit
+
+尽管我们在这些例子中都是通过 `curl` 与基本的 HTTP 请求来做几乎所有的事情，还有一些以更自然的方式利用 API 的开源库存在着
+
+在写这篇文章的时候，被支持的语言包括 Go、Objective-C、Ruby 与 .NET
+
+访问 https://github.com/octokit 了解更多相关信息，它们帮你处理了更多 HTTP 相关的内容
+
+希望这些工具能帮助你自定义与修改 GitHub 来更好地为特定的工作流程工作
+
+关于全部 API 的完整文档与常见任务的指南，请查阅 https://docs.github.com/cn
