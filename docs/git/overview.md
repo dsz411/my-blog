@@ -6,11 +6,6 @@ sidebar_position: 1
 
 安装 git: [Git - Installing Git (git-scm.com)](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-资源：
-
-- 中文：https://git-scm.com/book/zh/v2
-- 英文：https://git-scm.com/book/en/v2
-
 ## 初次运行 Git 前的配置
 
 Git 自带一个 `git config` 的工具来帮助设置控制 Git 外观和行为的配置变量
