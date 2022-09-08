@@ -1,3 +1,7 @@
+---
+sidebar_position: 11
+---
+
 # HTTP Headers
 
 HTTP 头允许客户端和服务器通过 HTTP 请求或响应传递附加信息, HTTP 报头由不区分大小写的名称后跟冒号( : ), 然后是它的值组成, 值前的[空格](https://developer.mozilla.org/en-US/docs/Glossary/Whitespace)将被忽略
