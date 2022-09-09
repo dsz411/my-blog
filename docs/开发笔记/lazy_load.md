@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 懒加载
 
-> 代码地址: https://github.com/dsz411/my-blog/code/lazy_load
+> 代码地址: https://github.com/dsz411/my-blog/tree/master/code/lazy_load
 
 懒加载就是延迟加载, 只在必要时才进行加载
 

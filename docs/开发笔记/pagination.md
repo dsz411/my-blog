@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 分页
 
-> 代码地址: https://github.com/dsz411/my-blog/code/pagination
+> 代码地址: https://github.com/dsz411/my-blog/tree/master/code/pagination
 
 分页是一种降低服务器以及前端页面负载的一种有效且非常常见的方式, 它可以用于处理返回的数据过多(一次性返回的数据更多,这时可以进行分页,一次只返回少量的数据,从而避免一次性渲染过多的数据, 减少页面的加载时间)
 
