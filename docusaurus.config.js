@@ -66,7 +66,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'http/http概述',
+            docId: '开发笔记/lazy_load',
             position: 'left',
             label: 'Tutorial',
           },
@@ -86,7 +86,7 @@ const config = {
             items: [
               {
                 label: "Docs",
-                to: "/docs/http/http概述",
+                to: "/docs/开发笔记/lazy_load",
               },
               {
                 label: "Blog",
