@@ -1,12 +1,5 @@
 ---
-slug: "a_simple_cli_app"
-title: "一个简单的CLI应用"
-tags: [cli, development]
-authors:
-  - name: Shouzhou Du
-    title: Author of this website
-    url: https://github.com/dsz411
-    image_url: https://avatars.githubusercontent.com/u/49437416?v=4
+sidebar_position: 1
 ---
 
 # CLI 开发的简单介绍

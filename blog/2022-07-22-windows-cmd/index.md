@@ -1,7 +1,6 @@
 ---
 slug: "windows-cmd"
 title: "Windows CMD 常用命令"
-tags: [windows, os, cmd]
 authors:
   - name: Shouzhou Du
     title: Author of this website

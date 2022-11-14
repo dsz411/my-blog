@@ -1,7 +1,6 @@
 ---
-slug: "进制转换"
+slug: "jinzhi-zhuanhuan"
 title: "进制转换"
-tags: ["computer basic"]
 authors:
   - name: Shouzhou Du
     title: Author of this website

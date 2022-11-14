@@ -1,7 +1,6 @@
 ---
 slug: "vs-code-shortcuts"
 title: "VS Code Shortcuts"
-tags: ["vs code", shortcuts, ide]
 authors:
   - name: Shouzhou Du
     title: Author of this website
