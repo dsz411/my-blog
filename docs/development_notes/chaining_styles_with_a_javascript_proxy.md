@@ -22,7 +22,7 @@ menu.style.backgroundColor = "#000";
 menu.style.opacity = "1";
 ```
 
-有几种不同的方法可以让这更方便，但前几天我开始考虑是否可以使用一个[`Proxy`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)对象（在撰写本文时，[全球支持率为 92.76%](https://caniuse.com/#search=proxy)）来启用样式更改的链接。事实证明，这相对容易。我们将介绍如何创建一个轻量级代理处理程序，这将使我们能够将上面的代码缩短为：
+有几种不同的方法可以让这更方便，但前几天我开始考虑是否可以使用一个`Proxy`对象来启用样式更改的链接。事实证明，这相对容易。我们将介绍如何创建一个轻量级代理处理程序，这将使我们能够将上面的代码缩短为：
 
 ```javascript
 style(".menu")

@@ -4,8 +4,6 @@ sidebar_position: 1
 
 # CLI 开发的简单介绍
 
-本文以一个在终端为 Vue CLI 项目添加路由的程序为例
-
 新建项目
 
 ```shell
@@ -302,88 +300,3 @@ To get Start:
 ```
 
 现在程序是可以正常运行的
-
-## 约定路由功能
-
-原理:
-
-- 用一个 loader 加载 views/ 文件夹里的组件
-- 渲染 template
-
-新建 lib/refresh.js 文件, 添加下面的代码
-
-```javascript
-const fs = require("fs");
-const handlebars = require("handlebars");
-const chalk = require("chalk");
-
-module.exports = async () => {
-  // 获取列表
-  const list = fs
-    .readdirSync("./src/views")
-    .filter((v) => v !== "Home.vue")
-    .map((v) => ({
-      name: v.replace(".vue", "").toLowerCase(),
-      file: v,
-    }));
-
-  // 生成路由定义
-  compile({ list }, "./src/router.js", "./template/router.js.hbs");
-
-  // 生成菜单
-  compile({ list }, "./src/App.vue", "./template/App.vue.hbs");
-
-  /**
-   * 模板编译
-   * @param {*} meta 数据定义
-   * @param {*} filePath 目标文件
-   * @param {*} templatePath 模板文件
-   */
-  function compile(meta, filePath, templatePath) {
-    if (fs.existsSync(templatePath)) {
-      const content = fs.readFileSync(templatePath).toString();
-      const result = handlebars.compile(content)(meta);
-      fs.writeFileSync(filePath, result);
-      console.log(`🚀${filePath} 创建成功`);
-    }
-  }
-};
-```
-
-然后现在在 bin/kfc.js 中新建一个 refresh 命令
-
-```javascript
-#!/usr/bin/env node
-const program = require("commander");
-
-program.version(require("../package.json").version);
-
-program
-  .command("init <name>")
-  .description("init project")
-  .action(require("../lib/init"));
-
-program
-  .command("refresh")
-  .description("refresh routers and menu")
-  .action(require("../lib/refresh"));
-
-program.parse(process.argv);
-```
-
-现在来测试一下, 进入 myvue 文件夹
-
-```shell
-myvue:> $ npm run serve
-```
-
-重开一个终端, 再次进入 myvue 文件夹
-
-```shell
-myvue:> $ kfc refresh
-
-🚀./src/router.js 创建成功
-🚀./src/App.vue 创建成功
-```
-
-现在应用已经出现了 contact 链接了, 并且可以正常连接到 contact 页面 🌹
