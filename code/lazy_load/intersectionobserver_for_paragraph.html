@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      main {
+        width: 300px;
+        height: 400px;
+        overflow-y: scroll;
+        margin: 0 auto;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 30px;
+        box-shadow: 0 0 1px 2px #eee;
+      }
+
+      mark {
+        --color1: springgreen;
+        --color2: rgb(57, 202, 130);
+        --bg-height: 40%;
+
+        all: unset;
+        background-image: linear-gradient(var(--color1), var(--color2));
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        background-size: 0 var(--bg-height);
+
+        -webkit-animation: highlight 800ms 1 ease-out;
+        animation: highlight 800ms 1 ease-out;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-play-state: paused;
+        animation-play-state: paused;
+      }
+
+      @-webkit-keyframes highlight {
+        to {
+          background-size: 100% var(--bg-height);
+        }
+      }
+
+      @keyframes highlight {
+        to {
+          background-size: 100% var(--bg-height);
+        }
+      }
+    </style>
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h2>Stop using Brave Browser, now!</h2>
+      <p>
+        I made a post in February about Brave Browser.
+        <mark
+          >I recommended my followers and everyone reading the post to make the
+          switch to Brave.</mark
+        >
+        However, after certain events over the past year or so, I have decided
+        to stop using Brave.
+      </p>
+      <p>
+        While I will not lie, it did improve my browsing experience. The main
+        issue lies with the second part of my statement:
+        <mark>security and privacy</mark>. The developers gave us a false sense
+        of security. They disappointed me, and every other Brave user out there.
+      </p>
+      <p>
+        Several months ago, Brave was involved in a “scandal”.
+        <mark
+          >Unfortunately, this incident did not get much media attention, and
+          it’s hard to search for and discover as of today</mark
+        >. The report I first saw was by https://androidpolice.com/:
+      </p>
+      <p>
+        Brave doesn’t seem so privacy-focused anymore, does it? They did all of
+        this, without telling the user. This meant that they intentionally
+        didn’t tell the user <mark>because they knew</mark> it would cause
+        backlash and disruption. They knew one hundred percent what they were
+        doing, and they knew it was unethical.
+      </p>
+      <p>
+        I would honestly just go back to basics.
+        <mark>No fancy stuff, just a good reliable browser</mark>: Firefox.
+        Firefox has plenty of customizable privacy options, without the
+        ownership of the scary conglomerates. I naturally trust
+        <mark>Firefox a large amount</mark> more than I trust Edge, Chrome, or
+        Safari.
+      </p>
+      <p>
+        While this might not seem like a big issue to people who don’t deal with
+        cryptocurrencies, it definitely is. It’s the fact
+        <mark
+          >that Brave Software has been doing all of this behind our backs, and
+          still claiming to be a completely privacy-focused browser</mark
+        >. It makes me think, what else could they be hiding?
+      </p>
+      <p>
+        Yes, this feature is off by default in the latest releases. I used past
+        tense “had” in reference to it though I should have pointed it out.
+        <mark
+          >The overall theme of the article was that it’s hard to trust them
+          after what they did. If you feel comfortable still using Brave thats
+          fine</mark
+        >. I personally don’t trust them and thats why I don’t use Brave
+        anymore.
+      </p>
+    </main>
+    <script>
+      (function (document) {
+        const markers = [...document.querySelectorAll("mark")];
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.intersectionRatio > 0) {
+                entry.target.style.animationPlayState = "running";
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.8 }
+        );
+
+        markers.forEach((mark) => {
+          observer.observe(mark);
+        });
+      })(document);
+    </script>
+  </body>
+</html>

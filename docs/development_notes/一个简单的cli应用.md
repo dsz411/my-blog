@@ -7,24 +7,27 @@ sidebar_position: 1
 新建项目
 
 ```shell
-$ mkdir vue-auto-route
-$ cd vue-auto-route
+$ mkdir cli-app
+$ cd cli-app
+$ npm init
 ```
 
 安装依赖
 
 ```shell
-$ yarn add commander download-git-repo ora handlebars figlet clear chalk open watch
+$ npm install commander download-git-repo ora handlebars figlet clear chalk open watch
 ```
 
-新建 bin/kfc.js 文件, 写入以下代码
+新建 `bin/kfc.js` 文件, 写入以下代码
 
 ```javascript
 #!/usr/bin/env node
 console.log("cli....");
 ```
 
-第一行指定了使用 node 解析器, 在 package.json 文件里添加 bin 字段
+第一行是比不可少的(特别是在 MacOS 环境中)，它指定了程序使用 node 解析器, 否则会报错: `line 1: syntax error near unexpected token "cli..."`
+
+在 package.json 文件里添加 bin 字段
 
 ```javascript
 {
@@ -55,9 +58,10 @@ cli....
 
 ```javascript
 #!/usr/bin/env node
-const program = require("commander");
+import {program} from "commander";
+import packageInfo from "../package.json" assert { type: "json" };
 
-program.version(require("../package.json").version);
+program.version(packageInfo.version);
 
 program
   .command("init <name>") // name 为参数
@@ -84,20 +88,23 @@ Commands:
   help [command]  display help for command
 ```
 
-现在将 action 里的逻辑分割到一个新的文件夹中, 新建 lib/init.js 文件, 输入以下内容
+现在将 action 里的逻辑分割到一个新的文件夹中, 新建 lib/init.mjs 文件(注意后缀名是 `.mjs`), 输入以下内容
 
 ```javascript
-const { promisify } = require("util");
-const figlet = promisify(require("figlet"));
-const clear = require("clear");
-const chalk = require("chalk");
+import { promisify } from "node:util";
+import _figlet from "figlet";
+import clear from "clear";
+import chalk from "chalk";
+
+const figlet = promisify(_figlet);
+
 
 const log = (content) => console.log(chalk.green(content));
 
-module.exports = async (name) => {
+export default async (name) => {
   // 打印欢迎界面
   clear();
-  const data = await figlet("KKB Welcome");
+  const data = await figlet("KFC Welcome");
   log(data);
 };
 ```
@@ -106,35 +113,23 @@ module.exports = async (name) => {
 
 ```javascript
 #!/usr/bin/env node
-const program = require("commander");
+import {program} from "commander";
+import packageInfo from "../package.json" assert { type: "json" };
+import actions from "../lib/init.mjs";
 
-program.version(require("../package.json").version);
+program.version(packageInfo.version);
 
 program
   .command("init <name>")
   .description("init project")
-  .action(require("../lib/init")); // *
+  .action(actions);
 
 program.parse(process.argv);
 ```
 
 此时运行 `kfc init ...` 就会不一样了
 
-```shell
-$ kfc init ...
-Usage: kfc [options] [command]
-
-Options:
-  -V, --version   output the version number
-  -h, --help      display help for command
-
-Commands:
-  init <name>     init project
-  help [command]  display help for command
-
-  # note that this is green
-
-```
+![02](./img/02.png)
 
 ## 从 Github 上下载模板
 
