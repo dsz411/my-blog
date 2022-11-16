@@ -1,6 +1,6 @@
 ---
 slug: "polyfills-transpilers"
-title: "Polyfills and Transpilers in JS"
+title: "JS 的 polyfills 和转译器"
 authors:
   - name: Shouzhou Du
     title: Author of this website
