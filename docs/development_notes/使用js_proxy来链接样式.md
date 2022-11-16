@@ -4,6 +4,8 @@ sidebar_position: 6
 
 # 使用 JavaScript 代理链接样式
 
+> 代码示例: https://github.com/dsz411/my-blog/tree/master/code/chain_style
+
 使用 jQuery 的乐趣之一是能够链接方法，使您能够方便地在同一个目标上调用多个方法。例如，在 jQuery 中，大多数方法都返回一个 jQuery 对象，因此您可以构建一个方法链，其中每个新方法都对前一个目标进行操作。这使您能够更新某些样式、运行动画和更新属性，而无需一遍又一遍地查询该元素：
 
 ```javascript
