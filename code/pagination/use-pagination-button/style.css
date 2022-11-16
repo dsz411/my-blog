@@ -1,3 +1,9 @@
+body {
+  padding: 20px;
+  background-color: #ebebeb;
+  font: 26px "Roboto";
+}
+
 .pagination {
   box-sizing: border-box;
   position: relative;
@@ -9,9 +15,9 @@
   box-shadow: 0px 0px 3px rgb(46, 46, 46);
   display: flex;
   justify-content: space-between;
-  font: 26px "Roboto";
   align-items: center;
   padding: 0 5px;
+  margin-bottom: 30px;
 }
 
 label {
@@ -25,7 +31,7 @@ label:hover {
   opacity: 1;
 }
 
-.item {
+.pageNum {
   opacity: 0.5;
   transition: 0.25s linear;
   cursor: pointer;
@@ -33,12 +39,54 @@ label:hover {
   opacity: 0.4s;
 }
 
-.item:hover {
+.pageNum:hover {
   opacity: 1;
 }
 
-.item.active {
+.pageNum.active {
   transform: scale(2);
   font-weight: bold;
   opacity: 1;
+}
+
+body .post {
+  position: relative;
+  background: #4992d3;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  margin: 0 auto 40px auto;
+  display: flex;
+}
+
+body .post:not(:first-child) {
+  margin-top: 40px;
+}
+
+body .post .number {
+  position: absolute;
+  top: -15px;
+  left: -7px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  color: #296ca8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 10px;
+}
+
+body .post .postInfo {
+  margin-left: 20px;
+}
+
+body .post .postTitle {
+  margin: 0;
+}
+
+body .post .postBody {
+  margin: 15px 0 0 0;
+  line-height: 1.3;
 }

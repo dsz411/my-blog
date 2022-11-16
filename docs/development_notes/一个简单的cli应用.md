@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # CLI 开发的简单介绍
 
+> 代码地址: https://github.com/dsz411/my-blog/tree/master/code/cli-app
+
 新建项目
 
 ```shell
@@ -136,76 +138,71 @@ program.parse(process.argv);
 现在从 Github 上下载模板, 为此新建 lib/download.js 文件, 输入以下内容
 
 ```javascript
-const { promisify } = require("util");
+import { promisify } from "node:util";
 
-module.exports.clone = async function (repo, desc) {
+const clone = async (repo, desc) => {
   const download = promisify(require("download-git-repo"));
   const ora = require("ora");
   const process = ora(`Downloading...${repo}`);
   process.start();
   await download(repo, desc);
   process.succeed();
-};
+}
+
+export { clone };
 ```
 
 然后在 lib/init.js 文件中导入它
 
 ```javascript
-const { promisify } = require("util");
-const figlet = promisify(require("figlet"));
-const clear = require("clear");
-const chalk = require("chalk");
+import { promisify } from "node:util";
+import _figlet from "figlet";
+import clear from "clear";
+import chalk from "chalk";
+import { clone } from "./download.mjs";
+
+const figlet = promisify(_figlet);
 
 const log = (content) => console.log(chalk.green(content));
-const { clone } = require("./download");
 
-module.exports = async (name) => {
+export default async (name) => {
   // 打印欢迎界面
   clear();
-  const data = await figlet("KKB Welcome");
+  const data = await figlet("KFC Welcome");
   log(data);
 
-  // clone
+  // 克隆项目
   log(`🚀创建项目 ${name}`);
-  await clone("github:su37josephxia/vue-sample", name);
+  await clone(
+    "github:facebook/create-react-app",
+    name
+  );
 };
 ```
 
-现在运行 `kfc init myvue`
+现在运行 `kfc init my-app`
 
-```shell
-$ kfc init myvue
-Usage: kfc [options] [command]
+![03](./img/03.png)
 
-Options:
-  -V, --version   output the version number
-  -h, --help      display help for command
+现在可以看到在 temp 文件夹下有了一个 my-app 文件夹
 
-Commands:
-  init <name>     init project
-  help [command]  display help for command
-
-
-
-🚀创建项目 myvue
-✔ Downloading...github:su37josephxia/vue-sample
-```
-
-现在可以看到在 vue-auto-route/ 文件夹下有了一个 myvue/ 文件夹, 但现在项目中没有任何依赖, 显然真实项目不是这样的, 下面就来写一些代码来使命令行自动安装依赖, 在 lib/init.js 中添加如下代码
+有时, 在一些项目中, 它们还会为你自动安装依赖, 如果你想自动安装依赖, 你可以使用下面这段代码, 在 lib/init.js 中添加
 
 ```javascript
-const { promisify } = require("util");
-const figlet = promisify(require("figlet"));
-const clear = require("clear");
-const chalk = require("chalk");
+import { promisify } from "node:util";
+import _figlet from "figlet";
+import clear from "clear";
+import chalk from "chalk";
+import { clone } from "./download.mjs";
+import { spawn as _spawn } from "node:child_process";
+
+const figlet = promisify(_figlet);
 
 const log = (content) => console.log(chalk.green(content));
-const { clone } = require("./download");
 
 const spawn = async (...args) => {
-  const { spawn } = require("child_process");
   return new Promise((resolve) => {
-    const proc = spawn(...args);
+    const proc = _spawn(...args);
     proc.stdout.pipe(process.stdout);
     proc.stderr.pipe(process.stderr);
     proc.on("close", () => {
@@ -214,51 +211,56 @@ const spawn = async (...args) => {
   });
 };
 
-module.exports = async (name) => {
+export default async (name) => {
   // 打印欢迎界面
   clear();
-  const data = await figlet("KKB Welcome");
+  const data = await figlet("KFC Welcome");
   log(data);
 
+  // 克隆项目
   log(`🚀创建项目 ${name}`);
-  await clone('github:su37josephxia/vue-template', name);
+  await clone("github:facebook/create-react-app", name);
 
   // 自动安装依赖
   log("安装依赖");
-  await spawn("yarn.cmd", ["install"], { cwd: `./${name}` });
+  await spawn("yarn", ["install"], { cwd: `./${name}` });
   log(`
-👌 安装完成
-To get Start:
-=============================
-  cd ${name}
-  npm run serve
-=============================
-  `);
+  👌 安装完成
+  To get Start:
+  =============================
+    cd ${name}
+    npm run serve
+  =============================
+    `);
 };
 ```
 
 > 注意在 windows 上, yarn 要用 yarn.cmd, 而不是 yarn, 可以使用以下语句进行判断
+>
+> ```javascript
+> process.platform === "win32" ? "yarn.cmd" : "yarn";
+> ```
+
+现在程序是可以正常运行的
+
+你还可以配置程序自动启动并且打开浏览器, 在 lib/init.js 文件中添加如下代码
 
 ```javascript
-process.platform === "win32" ? "yarn.cmd" : "yarn";
-```
+import { promisify } from "node:util";
+import _figlet from "figlet";
+import clear from "clear";
+import chalk from "chalk";
+import { clone } from "./download.mjs";
+import { spawn as _spawn } from "node:child_process";
+import open from "open";
 
-现在程序可以正常运行了, 现在来配置程序自动启动并且打开浏览器, 在 lib/init.js 文件中添加如下代码
-
-```javascript
-const { promisify } = require("util");
-const figlet = promisify(require("figlet"));
-const clear = require("clear");
-const chalk = require("chalk");
-const open = require("open");
+const figlet = promisify(_figlet);
 
 const log = (content) => console.log(chalk.green(content));
-const { clone } = require("./download");
 
 const spawn = async (...args) => {
-  const { spawn } = require("child_process");
   return new Promise((resolve) => {
-    const proc = spawn(...args);
+    const proc = _spawn(...args);
     proc.stdout.pipe(process.stdout);
     proc.stderr.pipe(process.stderr);
     proc.on("close", () => {
@@ -267,30 +269,31 @@ const spawn = async (...args) => {
   });
 };
 
-module.exports = async (name) => {
+export default async (name) => {
   // 打印欢迎界面
   clear();
-  const data = await figlet("KKB Welcome");
+  const data = await figlet("KFC Welcome");
   log(data);
 
+  // 克隆项目
   log(`🚀创建项目 ${name}`);
-  await clone('github:su37josephxia/vue-template', name);
+  await clone("github:facebook/create-react-app", name);
 
   // 自动安装依赖
   log("安装依赖");
-  await spawn("yarn.cmd", ["install"], { cwd: `./${name}` });
+  await spawn("yarn", ["install"], { cwd: `./${name}` });
   log(`
-👌 安装完成
-To get Start:
-=============================
-  cd ${name}
-  npm run serve
-=============================
-  `);
+  👌 安装完成
+  To get Start:
+  =============================
+    cd ${name}
+    npm run serve
+  =============================
+    `);
 
   open(`http://localhost:8080`);
   // 启动
-  await spawn("yarn.cmd", ["serve"], { cwd: `./${name}` });
+  await spawn("yarn", ["serve"], { cwd: `./${name}` });
 };
 ```
 
