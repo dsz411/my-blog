@@ -4,23 +4,15 @@ sidebar_position: 5
 
 # 实现一个基于 Promise 的 API
 
-如何实现返回 Promise 的API，一般来说，当你实现一个基于 Promise 的API时，你将包装一个异步操作，它可能使用事件，或普通的回调，或消息传递模型
+> 代码地址: https://github.com/dsz411/my-blog/tree/master/code/promise_api
 
-你将安排一个Promise对象来正确处理该操作的成功或失败
-
-在这个例子中，我们将实现一个基于 Promise 的 alarm API，称为 `alarm()`
-
-它的参数是要叫醒的人的名字和在叫醒人之前要等待的延迟时间（毫秒）
+如何实现返回 Promise 的API，一般来说，当你实现一个基于 Promise 的API时，你将包装一个异步操作，在这个例子中，我们将实现一个基于 Promise 的 alarm API，它的参数是要叫醒的人的名字和在叫醒人之前要等待的延迟时间（毫秒）
 
 在延迟之后，该函数将发送一个 "Wake up!"的消息，包括我们需要唤醒的人的名字
 
-我们将使用 setTimeout() API 来实现我们的 alarm() 函数
+我们将使用 setTimeout() API 来实现我们的 alarm() 函数，setTimeout() API将一个回调函数和一个延迟作为参数，以毫秒为单位，当setTimeout()被调用时，它启动一个设置为给定延迟的计时器，当时间过后，它就会调用给定的函数
 
-setTimeout() API将一个回调函数和一个延迟作为参数，以毫秒为单位
-
-当setTimeout()被调用时，它启动一个设置为给定延迟的计时器，当时间过后，它就会调用给定的函数
-
-在下面的例子中，我们用一个回调函数和一个1000毫秒的延迟调用setTimeout()
+在下面的例子中，我们用一个回调函数和一个1000毫秒的延迟来调用setTimeout()
 
 ```javascript
 <button id="set-alarm">Set alarm</button>
@@ -50,15 +42,11 @@ Promise()构造函数需要一个单一的函数作为参数
 
 我们将这个函数称为 executor
 
-当你创建一个新的 Promise 时，你要提供executor的实现
+当你创建一个新的 Promise 时，你需要提供executor的实现
 
 这个 executor 函数本身需要两个参数，这两个参数也都是函数，习惯上被称为 resolve 和 reject
 
-在你的执行器实现中，你调用底层的异步函数
-
 如果异步函数成功，你就调用 resolve，如果失败，你就调用 reject
-
-如果执行器函数抛出一个错误，就会自动调用 reject
 
 你可以向 resolve 和 reject 传递任何类型的单个参数
 
@@ -72,7 +60,7 @@ function alarm(person, delay) {
     }
     window.setTimeout(() => {
       resolve(`Wake up, ${person}!`);
-    }, delay);
+    }, delay * 1000);
   });
 }
 ```
@@ -102,7 +90,7 @@ function alarm(person, delay) {
     }
     window.setTimeout(() => {
       resolve(`Wake up, ${person}!`);
-    }, delay);
+    }, delay * 1000);
   });
 }
 
@@ -113,7 +101,7 @@ button.addEventListener('click', () => {
 });
 ```
 
-尝试为 "Name "和 "Delay"设置不同的值，尝试为 "Delay"设置一个负值
+尝试为 "Name "和 "Delay"设置不同的值或尝试为 "Delay"设置一个负值
 
 由于alarm()返回一个Promise，我们可以用它做任何其他 Promise 的事情：Promise链，Promise.all()，和async / await
 
@@ -130,7 +118,7 @@ function alarm(person, delay) {
     }
     window.setTimeout(() => {
       resolve(`Wake up, ${person}!`);
-    }, delay);
+    }, delay * 1000);
   });
 }
 
