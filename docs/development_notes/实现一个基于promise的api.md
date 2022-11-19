@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # 实现一个基于 Promise 的 API
 
-> 代码地址: https://github.com/dsz411/my-blog/tree/master/code/promise_api
+> 代码地址: https://github.com/dsz411/my-blog/tree/master/code/ja/promise_api
 
 如何实现返回 Promise 的API，一般来说，当你实现一个基于 Promise 的API时，你将包装一个异步操作，在这个例子中，我们将实现一个基于 Promise 的 alarm API，它的参数是要叫醒的人的名字和在叫醒人之前要等待的延迟时间（毫秒）
 

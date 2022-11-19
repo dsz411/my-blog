@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # 使用 JavaScript 代理链接样式
 
-> 代码示例: https://github.com/dsz411/my-blog/tree/master/code/chain_style
+> 代码示例: https://github.com/dsz411/my-blog/tree/master/code/ja/chain_style
 
 使用 jQuery 的乐趣之一是能够链接方法，使您能够方便地在同一个目标上调用多个方法
 

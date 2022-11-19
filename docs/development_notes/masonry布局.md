@@ -6,7 +6,7 @@ sidebar_position: 3
 
 > 也就是俗称的瀑布流布局
 
-> 代码地址: https://github.com/dsz411/my-blog/tree/master/code/masonry
+> 代码地址: https://github.com/dsz411/my-blog/tree/master/code/ja/masonry
 
 本篇会先从 bootstrap + masonry 入手, 教你什么是 masonry 布局, 然后我们会手动实现一个自己的 masonry 布局
 

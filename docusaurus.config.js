@@ -55,7 +55,7 @@ const config = {
             position: 'left',
             label: 'Guides',
           },
-          { to: "/blog/vs-code-shortcuts", label: "Blog", position: "left" },
+          { to: "/blog", label: "Blog", position: "left" },
           {
             href: "https://github.com/dsz411/my-blog",
             label: "GitHub",
@@ -73,6 +73,10 @@ const config = {
                 label: "Blog",
                 to: "/blog/vs-code-shortcuts",
               },
+              {
+                label: "Guides",
+                to: "/docs/category/development-notes"
+              }
             ],
           },
           {
@@ -80,15 +84,15 @@ const config = {
             items: [
               {
                 label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
+                href: "https://stackoverflow.com/users/19625998/dsz411",
               },
               {
-                label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
+                label: "Github Profile",
+                href: "https://github.com/dsz411",
               },
               {
                 label: "Twitter",
-                href: "https://twitter.com/docusaurus",
+                href: "https://twitter.com/LiamDu4",
               },
             ],
           },

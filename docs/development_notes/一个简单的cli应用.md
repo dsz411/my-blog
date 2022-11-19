@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # CLI 开发的简单介绍
 
-> 代码地址: https://github.com/dsz411/my-blog/tree/master/code/cli-app
+> 代码地址: https://github.com/dsz411/my-blog/tree/master/code/ja/cli-app
 
 新建项目
 
