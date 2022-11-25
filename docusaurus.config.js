@@ -75,7 +75,7 @@ const config = {
               },
               {
                 label: "Guides",
-                to: "/category/development-notes"
+                to: "/docs/category/development-notes"
               }
             ],
           },
