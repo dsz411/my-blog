@@ -71,11 +71,11 @@ const config = {
             items: [
               {
                 label: "Blog",
-                to: "/blog/vs-code-shortcuts",
+                to: "/blog",
               },
               {
                 label: "Guides",
-                to: "/docs/category/development-notes"
+                to: "/category/development-notes"
               }
             ],
           },
