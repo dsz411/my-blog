@@ -8,13 +8,13 @@ authors:
     image_url: https://avatars.githubusercontent.com/u/49437416?v=4
 ---
 
-# 理解类数组
-
 除了普通数组之外, JS 中一直还存在着一种类似数组的对象, 我们叫它 `Array-like`, 它们不能直接调用数组的方法, 但是又和数组比较类似, 一般会在某些特定的编程场景中会出现, 我们先来看看在 JavaScript 中有哪些情况下的对象是类数组的, 主要有以下几种: 
 
 - 函数里面的参数对象 `arguments`
 - 用 `getElements{ByTagName | ClassName | Name}()` 获得的 `HTMLCollection`
 - 用 `querySelector()` 获得的 `NodeList`
+
+<!--truncate-->
 
 ## arguments
 
