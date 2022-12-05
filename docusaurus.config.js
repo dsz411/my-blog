@@ -83,16 +83,12 @@ const config = {
             title: "Community",
             items: [
               {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/users/19625998/dsz411",
-              },
-              {
                 label: "Github Profile",
                 href: "https://github.com/dsz411",
               },
               {
                 label: "Twitter",
-                href: "https://twitter.com/LiamDu4",
+                href: "https://twitter.com/ShouzhouDu",
               },
             ],
           },

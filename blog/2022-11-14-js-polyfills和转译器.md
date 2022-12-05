@@ -1,5 +1,5 @@
 ---
-slug: "polyfills-transpilers"
+slug: "polyfills-and-transpilers"
 title: "JS 的 polyfills 和转译器"
 authors:
   - name: Shouzhou Du
