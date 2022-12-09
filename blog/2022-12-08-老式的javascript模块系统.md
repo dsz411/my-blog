@@ -10,7 +10,7 @@ authors:
 
 ## CommonJS
 
-这个规范主要用于在服务器端实现模块化代码的组织, CommonJS模块语法不能在浏览器中直接运行, CommonJS模块定义需要使用`require()`指定依赖, 使用`exports`对象定义自己的公共API
+这个规范主要用于在服务器端实现模块化代码的组织, CommonJS模块语法不能在浏览器中直接运行, CommonJS模块定义使用`require()`来指定依赖, 使用`exports`对象来定义公共的API
 
 > Node.js 实现了 CommonJS 模块规范
 
@@ -30,17 +30,17 @@ module.exports = {
 };
 ```
 
-`moduleA`通过使用一个相对路径来指定自己对`moduleB`的依赖; 模块标识符可能指向文件, 也可能指向包含index.js文件的目录, 也就是说, `require(./moduleB)` 可以加载的是 `./moduleB.js`, 也可以加载的是 `./moduleB/index.js`
+`moduleA`通过使用一个相对路径来指定了自己对`moduleB`的依赖; 模块标识符可能指向文件, 也可能指向包含index.js文件的目录, 也就是说, `require(./moduleB)` 可以加载的是 `./moduleB.js`, 也可以加载的是 `./moduleB/index.js`
 
-> 把模块赋值给变量也非常常见, 但赋值给变量不是必需的
+> 把模块赋值给变量也非常常见, 但这并不是必需的
 
-调用`require()`意味着会把模块原封不动地加载进来:
+调用`require()`意味着会把模块原封不动地加载进来
 
 ```javascript
 require('./moduleA'); // "moduleA"
 ```
 
-无论一个模块在`require()`中被引用多少次, 模块永远是单例的, 在下面的例子中, `moduleA`只会被打印一次, 这是因为无论请求多少次, `moduleA`只会被加载一次
+无论一个模块被`require()`引用了多少次, 模块永远是单例的, 在下面的例子中, `moduleA`只会被打印一次, 这是因为无论请求多少次, `moduleA`只会被加载一次
 
 ```javascript
 var a1 = require('./moduleA');
@@ -49,7 +49,7 @@ var a2 = require('./moduleA');
 console.log(a1 === a2); // true
 ```
 
-模块在第一次加载后会被缓存, 后续加载会取缓存的模块, 模块加载顺序由依赖图决定
+模块在第一次加载后会被缓存, 后续的加载会直接取缓存的模块, 模块的加载顺序由依赖图决定
 
 ```javascript
 require('./moduleA');
@@ -67,7 +67,7 @@ if (loadCondition) {
 
 这里, `moduleA`只会在`loadCondition`求值为`true`时才会加载; 这个加载是同步的, 因此`if()`块之前的任何代码都会在加载`moduleA`之前执行, 而`if()`块之后的任何代码都会在加载`moduleA`之后执行
 
-`moduleA`在`module.exports`对象上定义自己的公共接口, 即`stuff`属性, 如果有模块想使用这个接口, 可以像下面这样导入它:
+`moduleA`在`module.exports`对象上定义了自己的公共接口, 即`stuff`属性, 如果有模块想使用这个接口, 可以像下面这样导入它:
 
 ```javascript
 var moduleA = require('./moduleA');
@@ -75,7 +75,7 @@ var moduleA = require('./moduleA');
 console.log(moduleA.stuff);
 ```
 
-注意, 上面模块不导出任何内容; 但即使它没有公共接口, 然而如果某个应用程序请求了这个模块, 那也会在加载时执行这个模块
+注意, 上面模块不导出任何内容; 但即使它没有公共接口, 然而如果某个应用程序请求了这个模块, 也会加载并执行这个模块
 
 `module.exports`对象非常灵活, 有多种使用方式, 如果你只想导出一个实体, 你可以直接给`module.exports`赋值:
 
@@ -85,7 +85,7 @@ console.log(moduleA.stuff);
 module.exports = 'foo';
 ```
 
-这样, 整个模块就导出一个字符串, 可以像下面这样使用:
+这样, 整个模块就只导出一个字符串, 你可以像下面这样使用它:
 
 ```javascript
 var Foo = require('./foo');
@@ -93,7 +93,7 @@ var Foo = require('./foo');
 console.log(Foo); // 'foo'
 ```
 
-导出多个值也很常见, 你可以选择为 module.exports 赋予一个对象字面量或将每个导出属性一一挂载到 moudle.exports 上来实现:
+一个模块导出多个值也很常见, 你可以选择为 module.exports 赋予一个对象字面量或将每个导出属性一一挂载到 moudle.exports 上来实现:
 
 ```javascript
 // 等价操作：
