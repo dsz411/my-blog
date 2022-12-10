@@ -50,7 +50,7 @@ http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereI
 
 `#SomewhereInTheDocument` 是资源本身的另一部分的锚点, 例如, 在 HTML 文档上, 浏览器将会自动滚动到该锚点的位置, 在视频或音频文档上, 浏览器将尝试转到锚代表的时间, 值得注意的是, `＃`后面的部分(也称为片段标识符)不会发送到请求的服务器
 
-在 HTML 中, 例如 img 元素不仅接收绝对 URL, 也接受相对 URL
+在 HTML 中, 像 `<img>`, `<a>` 这样的元素不仅接收绝对 URL, 也接受相对 URL
 
 - 绝对 URL:
   - 完整网址: `https://developer.mozilla.org/en-US/docs/Learn`
@@ -58,7 +58,9 @@ http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereI
   - 隐去域名: `/en-US/docs/Learn`
 - 相对 URL:
   - 子资源: `Skills/Infrastructure/Understanding_URLs`
-  - 到目录树中导航: `../CSS/display`, `./CSS/display` 
+  - 到目录树中导航: `../CSS/display`, `./CSS/display`
+
+> 绝对 URL 对比相对 URL: https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#absolute_versus_relative_urls
 
 Data URLs, 即前缀为 `data:` 协议的 URL, 其允许内容创建者向文档中嵌入小文件, 它由四个部分组成:前缀 (`data:`); 指示数据类型的 MIME 类型; 可选的`base64`标记(如果数据是非文本); 数据本身
 
