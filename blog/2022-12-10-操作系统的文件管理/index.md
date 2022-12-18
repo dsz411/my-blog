@@ -12,6 +12,8 @@ authors:
 
 ![1](./1.png)
 
+<!--truncate-->
+
 文件系统是一个树形结构, 想象一下, 操作系统使用一个称之为路径的东西来让用户在文件系统中导航(操作系统的路径与 URL 地址是非常相似的, 它们拥有相同的原理), 例如如果我们在 Finder 的 Documents 下新建了一个 test/ 文件夹, 里面有一个 my.txt 的文本文件, 那么这个 my.rtf 文件的路径将会是: `/Users/dushouzhou/Documents/test`(完整的应该是: `Macintosh HD/Users/dushouzhou/Documents/test`, 斜杠代表的是绝对路径, 我们在 URL 中有讲过)
 
 > 在 Windows 上, 可能是 `C:/apps/...`, 在windows 上还有一种路径写法是: `C:\\apps\\...`, 其实windows 既支持 `/` 作为分隔符, 也支持 `\` 作为分隔符, 但一般都会写两个杠 `\\`, 这是为了与编程语言中的特殊字符, 例如 `\n` 想区别, 一般统一使用 `/` 作为分隔符就可以了
