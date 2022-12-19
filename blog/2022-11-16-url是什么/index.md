@@ -18,6 +18,8 @@ https://developer.mozilla.org/en-US/search?q=URL
 
 一个 URL 由不同的部分组成, 其中一些是必须的, 而另一些是可选的, 让我们以下面这个 URL 为例看看其中最重要的部分:
 
+<!--truncate-->
+
 ```
 http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument
 ```
@@ -59,8 +61,6 @@ http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereI
 - 相对 URL:
   - 子资源: `Skills/Infrastructure/Understanding_URLs`
   - 到目录树中导航: `../CSS/display`, `./CSS/display`
-
-> 绝对 URL 对比相对 URL: https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#absolute_versus_relative_urls
 
 Data URLs, 即前缀为 `data:` 协议的 URL, 其允许内容创建者向文档中嵌入小文件, 它由四个部分组成:前缀 (`data:`); 指示数据类型的 MIME 类型; 可选的`base64`标记(如果数据是非文本); 数据本身
 

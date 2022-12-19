@@ -16,6 +16,8 @@ authors:
 
 这时我们就需要转译器, 转译器会分析我们的代码, 并将 `height ?? 100` 重写为 `(height !== undefined && height !== null) ? height : 100`
 
+<!--truncate-->
+
 ```javascript
 // 在运行转译器之前
 height = height ?? 100;
